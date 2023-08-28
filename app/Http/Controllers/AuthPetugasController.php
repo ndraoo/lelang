@@ -46,9 +46,9 @@ class AuthPetugasController extends Controller
         $petugas = User::findOrFail($id);
         return view('admin.petugas.edit', compact('petugas'));
     }
-    public function update()
+    public function update($id)
     {
-        $petugas = User::findOrFail($id);
+    $petugas = User::findOrFail($id);
 
     $request->validate([
         'nama_lengkap' => 'required|string|max:255',

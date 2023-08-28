@@ -12,7 +12,8 @@ class LelangController extends Controller
      */
     public function index()
     {
-        //
+        $lelang = lelang::with('baramg')->get();
+        return  view('')
     }
 
     /**
