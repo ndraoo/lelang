@@ -19,7 +19,7 @@ class AuthPetugasController extends Controller
     {
         return view('admin/petugas/register');
     }
-    public function store()
+    public function store(request $request)
     {
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
@@ -47,7 +47,7 @@ class AuthPetugasController extends Controller
         $petugas = User::findOrFail($id);
         return view('admin.petugas.edit', compact('petugas'));
     }
-    public function update($id)
+    public function update(request $request,$id)
     {
     $petugas = User::findOrFail($id);
 
@@ -64,11 +64,11 @@ class AuthPetugasController extends Controller
         $petugas->password = Hash::make($request->password);
     }
     $petugas->level = $request->level;
-    $petugas->save();
+    $petugas->save($id);
 
     return redirect()->route('admin.petugas.index')->with('success', 'Data petugas berhasil diperbarui.');
     }
-    public function destroyer()
+    public function destroyer($id)
     {
         $petugas = User::findOrFail($id);
         $petugas->delete();
