@@ -12,7 +12,7 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <div class="card bg-dark text-center">
-                <div class="card-body">
+                <div class="card-body col-sm-2">
                    Petugas Pelelangan
                 </div>
             </div>
@@ -31,9 +31,9 @@
 
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('admin.petugas.register') }}" class="btn btn-md btn-secondary mb-3 float-right">Tambah Petugas</a>
-
-                    <table class="table table-bordered mt-1">
+                    <a href="{{ route('admin.petugas.register') }}" class="btn btn-md btn-primary mb-3 float-right">Tambah Petugas</a>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">No</th>
@@ -56,10 +56,14 @@
                                     <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                         action="{{ route('admin.petugas.destroy', $row->id) }}" method="POST">
                                         <a href="{{ route('admin.petugas.edit', $row->id) }}"
-                                            class="btn btn-sm btn-primary">EDIT</a>
+                                            class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> EDIT
+                                        </a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i> HAPUS
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -70,7 +74,8 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center mt-3">
+                    </div>
+                    <div class="d-flex justify-content-center">
                         {!! $admin->links() !!}
                     </div>
                 </div>

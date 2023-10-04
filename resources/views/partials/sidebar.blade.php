@@ -38,7 +38,7 @@
         @if (Auth::user()->level == 'admin')
           <li class="nav-item">
             <a href="{{ route('admin.petugas.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-user-plus"></i>
               <p>
                 Petugas
               </p>
@@ -49,7 +49,7 @@
           @if (Auth::user()->level == 'admin')
           <li class="nav-item">
             <a href="{{ route('admin.barang.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-box"></i>
+              <i class="nav-icon fas fa-archive"></i>
               <p>
                 Barang
               </p>
@@ -59,8 +59,8 @@
 
           @if (Auth::user()->level == 'petugas')
           <li class="nav-item">
-            <a href="{{ route('barang.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-box"></i>
+            <a href="{{ route('petugas.barang.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-archive"></i>
               <p>
                 Barang
               </p>
@@ -68,16 +68,16 @@
           </li>
           @endif
 
+          @if (Auth::user()->level == 'admin')
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-gavel"></i>
+            <a href="{{ route('admin.lelang.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-cart-arrow-down"></i>
               <p>
                 Pelelangan
               </p>
             </a>
           </li>
-          <li class="nav-header">HISTORY PELELANGAN</li>
-
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

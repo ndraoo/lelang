@@ -31,7 +31,7 @@ class AuthPetugasController extends Controller
         User::create([
             'nama_lengkap' => $request->nama_lengkap,
             'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'level' => $request->level,
             'telp' => 0,
         ]);
@@ -61,7 +61,7 @@ class AuthPetugasController extends Controller
     $petugas->nama_lengkap = $request->nama_lengkap;
     $petugas->username = $request->username;
     if ($request->has('password')) {
-        $petugas->password = Hash::make($request->password);
+        $petugas->password = $request->password;
     }
     $petugas->level = $request->level;
     $petugas->save($id);

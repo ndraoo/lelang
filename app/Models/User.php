@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'nama_lengkap',
         'username',
@@ -47,5 +48,5 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
-    }   
+    }
 }

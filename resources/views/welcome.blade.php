@@ -226,7 +226,7 @@
               <a href="{{ route('login') }}" class="nav-link">Login</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('register') }}" class="nav-link">Daftar</a>
+              <a href="{{ route('registermasyarakat') }}" class="nav-link">Daftar</a>
             </li>
           @else <!-- If user is logged in -->
             <li class="nav-item">
@@ -246,7 +246,7 @@
             <div class="container">
                 @guest <!-- Check if user is a guest (not logged in) -->
                 <a href="{{ route('login') }}" class="btn btn-mulai-pelelangan">Log in</a>
-                <a href="{{ route('register') }}" class="btn btn-mulai-pelelangan">Daftar</a>
+                <a href="{{ route('registermasyarakat') }}" class="btn btn-mulai-pelelangan">Daftar</a>
                 @else <!-- If user is logged in -->
                 <a href="#" class="btn btn-mulai-pelelangan">Mulai Pelelangan</a>
                 @endguest
@@ -383,7 +383,7 @@
             <li><a href="#">Submit a bid</a></li>
           </ul>
         </div>
-      </div>
+      </div>    
       <div class="row mt-4">
         <div class="col-lg-4">
           <h4>Kontak</h4>
@@ -421,7 +421,29 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@include('sweetalert::alert')
+<!-- Script to handle alerts -->
+<script>
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success') }}',
+            confirmButtonText: 'OK'
+        });
+    @endif
+
+    @if(session('error'))
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ is_array(session('error')) ? implode("<br>", session('error')) : session('error') }}',
+            confirmButtonText: 'OK'
+        });
+
+    @endif
+    </script>
 </body>
 </html>
-
 

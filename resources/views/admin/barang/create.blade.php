@@ -34,7 +34,7 @@
                     <form action="{{ route('admin.barang.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="nama_barang">Nama barang</label>
+                            <label for="nama_barang">Nama Barang</label>
                             <input type="text" class="form-control @error('nama_barang') is-invalid @enderror"
                                 name="nama_barang" value="{{ old('nama_barang') }}" placeholder="Nama Barang" required>
 
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="foto">Foto barang</label>
+                            <label for="foto">Foto Barang</label>
                             <input type="file" class="form-control-file @error('foto') is-invalid @enderror" name="foto" accept="image/*">
 
                             <!-- Error message untuk foto -->
@@ -71,8 +71,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="harga_awal">Harga awal</label>
-                            <input type="text" class="form-control @error('harga_awal') is-invalid @enderror"
+                            <label for="harga_awal">Harga Awal</label>
+                            <input type="number" class="form-control @error('harga_awal') is-invalid @enderror"
                                 name="harga_awal" value="{{ old('harga_awal') }}" placeholder="Harga Awal" required>
 
                             <!-- error message untuk harga_awals -->
@@ -84,9 +84,8 @@
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-                                name="deskripsi" value="{{ old('deskripsi') }}" placeholder="Deskripsi" required>
-
+                            <textarea class="form-control @error('deskripsi') is-invalid @enderror"
+                                name="deskripsi" placeholder="Deskripsi" required>{{ old('deskripsi') }}</textarea>
                             <!-- error message untuk deskripsi -->
                             @error('deskripsi')
                             <div class="invalid-feedback">

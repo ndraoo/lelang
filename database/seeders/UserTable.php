@@ -19,21 +19,21 @@ class UserTable extends Seeder
             'nama_lengkap' => 'ini akun masyarakat (non admin)',
             'level' => 'masyarakat',
             'telp' => '08997722441',
-            'password' => bcrypt('12345678'),
+            'password' => '12345678',
             ],
             [
             'username' => 'admin',
             'nama_lengkap' => 'ini akun Admin',
             'level' => 'admin',
             'telp' => '08997722451',
-            'password' => bcrypt('12345678'),
+            'password' => '12345678',
             ],
             [
             'username' => 'petugas',
             'nama_lengkap' => 'ini akun petugas (non admin)',
             'level' => 'petugas',
             'telp' => '08997722461',
-            'password' => bcrypt('12345678'),
+            'password' => '12345678',
             ],
         ];
 

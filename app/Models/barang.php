@@ -11,10 +11,17 @@ class barang extends Model
     protected $tabel = [
     'barangs'
     ];
-    protected $guard = [
-    'id'
+    protected $primaryKey = 'id';
+    protected $casts = [
+        'tanggal' => 'datetime',
     ];
+
     protected $fillable = [
     'nama_barang','foto', 'tanggal', 'harga_awal', 'deskripsi'
     ];
+
+    public function lelang()
+    {
+        return $this->belongsTo(lelang::class, 'id');
+    }
 }

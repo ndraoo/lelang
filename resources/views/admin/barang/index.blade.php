@@ -12,7 +12,7 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <div class="card bg-dark text-center">
-                <div class="card-body">
+                <div class="card-body col-sm-2">
                     Barang Pelelangan
                 </div>
             </div>
@@ -31,48 +31,59 @@
 
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <a href="{{ route('admin.barang.create') }}" class="btn btn-md btn-secondary mb-3 float-right">Tambah Barang</a>
+                    <a href="{{ route('admin.barang.create') }}" class="btn btn-md btn-primary mb-3 float-right">Tambah Barang</a>
 
-                    <table class="table table-bordered mt-1">
-                        <thead>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                          <table class="table table-hover">
+                              <thead>
                             <tr>
-                                <th class="text-center" scope="col">No</th>
-                                <th scope="col">Nama barang</th>
-                                <th scope="col">Foto barang</th>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col">Harga awal</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Action</th>
+                                <th>No</th>
+                                <th>Nama Barang</th>
+                                <th>Foto Barang</th>
+                                <th>Tanggal</th>
+                                <th>Harga awal</th>
+                                <th>Deskripsi</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($barang as $row)
                             <tr>
-                                <td class="text-center">{{ ++$i }}</td>
-                                <td>{{ $row->nama_barang }}</td>
-                                <td><img src="{{ asset('storage/' . $row->foto) }}" alt="Foto Barang" width="100"></td>
-                                <td> {{ date('d-m-Y', strtotime($row->tanggal)) }} </td>
-                                <td>{{ currency_IDR($row->harga_awal) }}</td>
-                                <td>{{ $row->deskripsi }}</td>
-                                <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                        action="{{ route('admin.barang.destroy', $row->id) }}" method="POST">
-                                        <a href="{{ route('admin.barang.edit', $row->id) }}"
-                                            class="btn btn-sm btn-primary">EDIT</a>
+                                @forelse ($barang as $row)
+                                <tr>
+                                    <td class="text-center">{{ ++$i }}</td>
+                                    <td>{{ $row->nama_barang }}</td>
+                                    <td><img src="{{ asset('storage/' . $row->foto) }}" alt="Foto Barang" width="100"></td>
+                                    <td> {{ date('d-m-Y', strtotime($row->tanggal)) }} </td>
+                                    <td>{{ currency_IDR($row->harga_awal) }}</td>
+                                    <td class="description-cell">{{ $row->deskripsi }}</td>
+                                    <td>
+                                    <form action="{{ route('admin.barang.destroy', $row->id) }}" method="POST">
+                                        <a href="{{ route('admin.barang.edit', $row->id) }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> EDIT
+                                        </a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                        <button type="submit" class="btn btn-sm btn-danger" data-confirm-delete="true">
+                                            <i class="fas fa-trash"></i> HAPUS
+                                        </button>
                                     </form>
-                                </td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                                @empty
+                                <tr>
+                                    <td class="text-center text-mute" colspan="4">Data Barang tidak tersedia</td>
+                                </tr>
+                                @endforelse
+                              {{-- <td><span class="label label-success">Approved</span></td> --}}
                             </tr>
-                            @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data Barang tidak tersedia</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    <div class="d-flex justify-content-center mt-3">
+                          </table>
+                        <!-- /.box-body -->
+                      </div>
+                      <!-- /.box -->
+                    </div>
+                    <div class="d-flex justify-content-center">
                         {!! $barang->links() !!}
                     </div>
                 </div>

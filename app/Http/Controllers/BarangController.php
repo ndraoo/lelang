@@ -22,6 +22,10 @@ class BarangController extends Controller
                 $view = 'petugas.barang.index';
             }
             $barang = barang::latest()->paginate(10);
+
+            $title = 'Hapus Barang!';
+            $text = "Apakah kamu yakin ingin menghapusnya?";
+            confirmDelete($title, $text);
             return view($view, compact('barang'))->with('i', (request()->input('page', 1) - 1) * 10);
         }
 
